@@ -21,7 +21,11 @@ Pod::Spec.new do |s|
 
       # required to load all symbols in the library
       #ss.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-force_load ${PODS_ROOT}/../../QuickJS_iOS/QuickJS_iOS/lib/libquickjs.a' }
-      ss.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-force_load ${PODS_ROOT}/QuickJS/QuickJS_iOS/lib/libquickjs.a' }
+      ss.user_target_xcconfig = { 
+        'HEADER_SEARCH_PATHS' => '$(PODS_ROOT)/QuickJS/QuickJS_iOS/headers/',
+        'FRAMEWORK_SEARCH_PATHS' => '$(PODS_ROOT)/QuickJS/QuickJS_iOS/lib/',
+        'OTHER_LDFLAGS' => '-force_load ${PODS_ROOT}/QuickJS/QuickJS_iOS/lib/libquickjs.a'
+      }
 
     end
   end
