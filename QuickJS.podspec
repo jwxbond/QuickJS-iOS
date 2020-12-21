@@ -8,7 +8,7 @@ Pod::Spec.new do |s|
     s.author       = { "Francis Chong" => "francis@ignition.hk" } # Podspec maintainer
     s.requires_arc = false
     s.platform     = :ios, "10.0" 
-    s.source       = { :git => "https://github.com/siuying/QuickJS-iOS.git", :tag => s.version }
+    s.source       = { :git => "https://github.com/siuying/QuickJS-iOS.git", :branch => "master" }
     s.default_subspec = 'precompiled'
 
     s.prepare_command = 'sh build.sh'
@@ -20,6 +20,8 @@ Pod::Spec.new do |s|
       ss.vendored_libraries  = 'QuickJS_iOS/lib/*.a'
 
       # required to load all symbols in the library
-      ss.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-force_load ${PODS_ROOT}/../../QuickJS_iOS/QuickJS_iOS/lib/libquickjs.a' }
+      #ss.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-force_load ${PODS_ROOT}/../../QuickJS_iOS/QuickJS_iOS/lib/libquickjs.a' }
+      ss.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-force_load ${PODS_ROOT}/QuickJS/QuickJS_iOS/lib/libquickjs.a' }
+
     end
   end
